@@ -1,7 +1,7 @@
 # Overview
 The program ```test.cpp``` demonstrates an issue we have found when using the octagon domain of ELINA. ```test.cpp``` applies a sequence of affine transformation followed by meets with (>= 0) to an initial abstract domain (essentially fully connected layer + relu). We find ```test.cpp``` will have different behaviors if ```elina_lincons0_array_clear``` is not called in line 357 of ```test.cpp```. If it is not called, then the second linear transformation yields bottom, but if it is then we get nonempty constraints. However, the weird part is that the constraints just before this transformation are the same regardless of whether we clear the array.
 
-We show this by printing the linear constraints from the transformed domain, which we get from ```elina_abstract0_to_lincons_array```. Each transformation should produce two sets of constraints: 1 for the transformation and 1 for the meet with constraint (>= 0). We have provided a script to verify and usage instructions below. 
+We show this by printing the linear constraints from the transformed domain, which we get from ```elina_abstract0_to_lincons_array```. Each transformation should produce two sets of constraints: 1 for the transformation and 1 for the meet with constraint (>= 0). We have provided a script to verify that the constraints are the same. Usage instructions are below. 
 
 To our knowledge this occurs for all versions of ELINA but we know for sure it works up to the latest commit (```0cbacc714a1fcc261df538c398cfa14d88a9251c```)
 ## Important Issue
