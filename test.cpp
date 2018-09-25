@@ -430,7 +430,7 @@ std::vector<AffineTransform> readTransforms(std::string filename) {
   std::string line;
   int i = 0;
   while (getline(file, line)) {
-    if (line != "ReLU") { //TODO: Change
+    if (line != "ReLU") {
       throw std::runtime_error("This is not a fully connected network");
     }
     getline(file, line);
