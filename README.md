@@ -1,5 +1,5 @@
 # Overview
-The program ```test.cpp``` demonstrates an issue we have found when using the octagon domain of ELINA. ```test.cpp``` applies a sequence of affine transformation followed by meets with (>= 0) to an initial abstract domain (essentially fully connected layer + relu). We find ```test.cpp``` will have different behaviors if ```elina_lincons0_array_clear```` is commented in line 353 of ```test.cpp```. If the line is commented, then the second linear transformation yields bottom, but if it isn't then we get nonempty constraints. Strangely we find that the constraints just before this transformation are the same regardless of whether we clear the array.
+The program ```test.cpp``` demonstrates an issue we have found when using the octagon domain of ELINA. ```test.cpp``` applies a sequence of affine transformation followed by meets with (>= 0) to an initial abstract domain (essentially fully connected layer + relu). We find ```test.cpp``` will have different behaviors if ```elina_lincons0_array_clear``` is commented in line 357 of ```test.cpp```. If the line is commented, then the second linear transformation yields bottom, but if it isn't then we get nonempty constraints. Strangely we find that the constraints just before this transformation are the same regardless of whether we clear the array.
 
 We show this by printing the linear constraints from the transformed domain, which we get from ```elina_abstract0_to_lincons_array```. Each transformation should produce two sets of constraints: 1 for the transformation and 1 for the meet with constraint (>= 0). We have provided a script to verify and usage instructions below. 
   
@@ -50,6 +50,7 @@ Layer: 2 after ReLU
 ```
 
 ### Clearing array
+```
 180: x9 + 9.3590256561560938309 >= 0
 181: -x0 - x9 + 16.704760200984697605 >= 0
 182: x0 - x9 + 16.459121417491466844 >= 0
@@ -72,4 +73,4 @@ Layer: 2 after ReLU
 199: -x9 + 8.2052457123764419578 >= 0
 PRINTED AFTER RELU in Layer 2
 Clearing
-
+```
