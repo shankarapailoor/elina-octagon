@@ -7,7 +7,7 @@ We show this by printing the linear constraints from the transformed domain, whi
 In order to compile, we needed to add ```#include "gmp.h"``` on line 26 of ```opt_oct.h``` above the ```#ifdef __cplusplus```. 
 
 ## Build test.cpp
-g++ test.cpp -lgmp -lmpfr -lelinaux -loptoct
+```g++ -std=c++11 test.cpp -lgmp -lmpfr -lelinaux -loptoct```
 
 ## Run test.cpp
 ```bash
