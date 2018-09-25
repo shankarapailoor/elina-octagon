@@ -3,6 +3,7 @@ The program ```test.cpp``` demonstrates an issue we have found when using the oc
 
 We show this by printing the linear constraints from the transformed domain, which we get from ```elina_abstract0_to_lincons_array```. Each transformation should produce two sets of constraints: 1 for the transformation and 1 for the meet with constraint (>= 0). We have provided a script to verify and usage instructions below. 
 
+To our knowledge this occurs for all versions of ELINA but we know for sure it works up to the latest commit (```0cbacc714a1fcc261df538c398cfa14d88a9251c```)
 ## Important Issue
 In order to compile, we needed to add ```#include "gmp.h"``` on line 26 of ```opt_oct.h``` above the ```#ifdef __cplusplus```. 
 
